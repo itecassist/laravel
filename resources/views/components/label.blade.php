@@ -1,17 +1,5 @@
-@props([
-    'label' => null,
-])
+@props(['for'])
 
-@php
-    $attributes = $attributes->class([
-        'form-label',
-    ])->merge([
-        //
-    ]);
-@endphp
-
-@if($label || !$slot->isEmpty())
-    <label {{ $attributes }}>
-        {{ $label ?? $slot }}
-    </label>
-@endif
+<label {{ $attributes->merge(['class' => 'form-label']) }} for="{{ $for }}">
+    {{ $slot }}
+</label>

@@ -1,17 +1,7 @@
-@props([
-    'key' => null,
-])
+@props(['for'])
 
-@php
-    $attributes = $attributes->class([
-        'invalid-feedback',
-    ])->merge([
-        //
-    ]);
-@endphp
-
-@error($key)
-    <div {{ $attributes }}>
-        {{ $message }}
-    </div>
+@error($for)
+    <span {{ $attributes->merge(['class' => 'invalid-feedback']) }} role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
 @enderror
