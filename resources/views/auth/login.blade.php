@@ -12,29 +12,20 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <div class="col-4 text-md-end">
-                                <x-label for="email" >{{ __('Email Address') }}</x-label>
-                            </div>
+                            <x-label for="email" class="col-4 text-md-end">{{ __('Email Address') }}</x-label>
                             
-
                             <div class="col-6">
-                                <x-input type="email" id="email" class="{{ $errors->has('email') ? 'is-invalid' : '' }}" />
+                                <x-input type="email" name="email" id="email" class="{{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('email') }}"/>
                                 <x-error for="email" />
-    
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
+                            <x-label for="password" class="col-md-4 text-md-end">{{ __('Password') }}</x-label>
+                        
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <x-input id="password" name="password" type="password" class="{{ $errors->has('password') ? 'is-invalid' : '' }}" required autocomplete="current-password"/>
+                                <x-error for="password"/>
                             </div>
                         </div>
 
