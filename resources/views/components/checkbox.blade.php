@@ -1,16 +1,6 @@
-@props(['name'=>null, 'wire'=>null])
-<label class="row">
-    <span class="col form-label">{{ $slot }}</span>
-    <span class="col-auto">
-    <label class="form-check form-check-single form-switch">
-        <input class="form-check-input" type="checkbox"
-        @if ($name)
-            name="{{ $name }}"
-        @else
-            wire:model="{{ $wire }}"
-        @endif
-        >
-    </label>
-    </span>
-</label>
+@props(['id', 'title'])
 
+<div class="form-check form-switch">
+    <input {!! $attributes->merge(['class' => 'form-check-input']) !!} type="checkbox" wire:model.defer="{{ $id }}" id="{{ $id }}" name="{{ $id }}">
+    <label class="form-check-label" for="{{ $id }}">{{ $title }}</label>
+</div>
