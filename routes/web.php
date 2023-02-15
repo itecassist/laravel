@@ -20,6 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 Route::middleware(['web','auth'])->group(function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::view('users', 'admin.users')->name('users');
 });
 

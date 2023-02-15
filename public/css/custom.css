@@ -672,7 +672,7 @@
     padding-top: 1.75rem;
     padding-bottom: 1.75rem;
   }
-  /*.card {
+  /* .card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -682,8 +682,8 @@
     background-clip: border-box;
     border-radius: 0.475rem;
     border: 0;
-  }
-*/
+  } */
+
   
   .dropdown-menu {
     width: 220px;
