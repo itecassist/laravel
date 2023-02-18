@@ -26,20 +26,7 @@ function convertToKeyword(Text) {
         .toLowerCase()
         .replace(/ /g, ', ');
 }
-function notice(type, title, message = '', time = 1500) {
-    if (type === 'error') {
-        time = 2500;
-    }
-    Swal.fire({
-        position: 'top-end',
-        toast: true,
-        title: title,
-        html: message,
-        icon: type,
-        showCloseButton: true, showConfirmButton: false,
-        timer: time
-    });
-}
+
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -48,18 +35,6 @@ $.ajaxSetup({
 window.addEventListener('modal', event => {
     $('#' + event.detail.modal).modal(event.detail.action);
 });
-const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-right',
-    showConfirmButton: false,
-    showCloseButton: true,
-    timer: 2200,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-});
 
 window.addEventListener('alert', ({ detail: { type, message } }) => {
     Toast.fire({
@@ -67,7 +42,7 @@ window.addEventListener('alert', ({ detail: { type, message } }) => {
         title: message
     })
 });
-$('.select').select2();
+
 function openNav(val) {
     if(isNaN(val)){
         val = 350;

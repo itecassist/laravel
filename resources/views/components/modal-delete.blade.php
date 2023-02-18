@@ -1,19 +1,24 @@
-<form wire:submit.prevent="destroy">
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" wire:ignore.self>
-    <div class="modal-dialog">
-      <div class="modal-content" style="border-radius: 10px">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">{{ __('global.delete') }}</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+@props(['id'])
+<form wire:submit.prevent="{{ $id }}">
+    <div class="modal fade" id="{{ $id }}" wire:ignore.self>
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{ __('global.delete') }}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ __('Are you sure you want to delet this record?') }}
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">{{ __('global.close') }}</button>
+                    <button type="button" class="btn btn-danger btn-sm">{{ __('global.delete') }}</button>
+                </div>
+            </div>
+
         </div>
-        <div class="modal-body">
-          {{ __('Are you sure you want to delet this record?') }}
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">{{ __('global.close') }}</button>
-          <button type="submit" class="btn btn-danger btn-sm">{{ __('global.delete') }}</button>
-        </div>
-      </div>
+
     </div>
-  </div>
 </form>
