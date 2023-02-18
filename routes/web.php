@@ -21,7 +21,8 @@ Auth::routes();
 Route::middleware(['web','auth'])->group(function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::prefix('user-management')->as('user-management.')->group(function(){
-        Route::get('users', [\App\Http\Controllers\UserManagement::class, 'users'])->name('users');
+        Route::get('users', [\App\Http\Controllers\UserManagementController::class, 'users'])->name('users');
+        Route::get('permissions', [\App\Http\Controllers\UserManagementController::class, 'permissions'])->name('permissions');
     });
 });
 

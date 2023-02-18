@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\UserManagement;
 
 use Livewire\Component;
 use App\Models\User;
@@ -67,13 +67,14 @@ class Users extends Component
 	public function render()
 	{
 		$data = $this->query()
+            // ->where('company_id', session()->get('company')['id'])
 			->when($this->searchTerm, function($q){
 				$q->where('first_name', 'like', '%'.$this->searchTerm.'%');
 			})
 			->orderBy($this->sortBy, $this->sortAsc ? 'ASC' : 'DESC')
 			->paginate($this->pageSize);
 
-        return view('livewire.users', ['data'=>$data]);
+        return view('livewire.user-management.users', ['data'=>$data]);
     }
 
     public function createUsers()

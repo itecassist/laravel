@@ -1,4 +1,3 @@
 <x-app-layout>
-
-    @livewire('users')
+    @livewire('user-management.users')
 </x-app-layout>

@@ -3,16 +3,20 @@
     <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title"><a href="{{ route('user-management.users') }}">{{ __('user-management/users.title') }}</a>
-          <button class="btn btn-primary btn-sm" wire:click="createUsers">Add New Record</button>
-          </h3>
-
-          <div class="card-tools">
             <div class="row">
-                <div class="col-md-4"><input type="text" class="form-control form-control-sm" value="8" size="3" wire:model="pageSize"></div>
-                <div class="col-md-8"><input type="text" class="form-control form-control-sm" wire:model.debounce.300ms="searchTerm" placeholder="Search"></div>
+                <div class="col-md-5">
+                    <h3 class="card-title"><a href="{{ route('user-management.users') }}">{{ __('user-management/users.title') }}</a></h3>
+                </div>
+                <div class="col-md-4"><button class="btn btn-primary btn-sm" wire:click="createUsers"><i class="fa fa-plus"></i> {{ __('global.create_new') }}</button></div>
+                <div class="col-md-3">
+                    <div class="card-tools">
+                        <div class="row">
+                            <div class="col-md-3"><input type="text" class="form-control form-control-sm" value="8" size="3" wire:model="pageSize"></div>
+                            <div class="col-md-9"><input type="text" class="form-control form-control-sm" wire:model.debounce.300ms="searchTerm" placeholder="Search"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
