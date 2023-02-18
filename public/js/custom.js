@@ -35,7 +35,12 @@ $.ajaxSetup({
 window.addEventListener('modal', event => {
     $('#' + event.detail.modal).modal(event.detail.action);
 });
-
+var Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 2500
+  });
 window.addEventListener('alert', ({ detail: { type, message } }) => {
     Toast.fire({
         icon: type,

@@ -22,7 +22,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">{{ __('global.close') }}</button>
-                <button type="button" class="btn btn-primary btn-sm">{{ __('global.save') }}</button>
+                <button class="btn btn-primary btn-sm" type="submit">{{ __('global.save') }}</button>
             </div>
         </div>
 

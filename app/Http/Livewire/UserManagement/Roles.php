@@ -79,7 +79,7 @@ class Roles extends Component
     {
         $validated = $this->validate();
 
-        if(!is_null($this->recordID))
+        if(!is_null($this->recordId))
         {
             Role::find($this->recordId)->update($validated);  
             $this->dispatchBrowserEvent('alert', ['type'=>'success', 'message'=> __('global.record_updated')]);
