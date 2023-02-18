@@ -47,6 +47,7 @@ return [
     'create'                            => 'Create',
     'create_new'                        => 'Create New Record',
     'created_at'                        => 'Created At',
+    'crud'                              => 'CRUD',
     'date'                              => 'Date',
     'dashboard'                         => 'Dashboard',
     'delete'                            => 'Delete',
@@ -83,6 +84,7 @@ return [
     'payment'                           => 'Payment',
     'period'                            => 'Period',
     'pleaseSelect'                      => 'Please select',
+    'please_select_a_company'           =>'Please select a working company',
     'profile'                           => 'Profile',
     'purchase'                          => 'Purchase',
     'receipt'                           => 'Receipt',
@@ -160,6 +162,14 @@ return [
     'yesno'=>[
         1 => 'Yes',
         0 => 'No'
+    ],
+    'gender'    => [
+        '0'   => 'Female',
+        '1'   => 'Male'
+    ],
+    'language' => [
+        'af'    => 'Afrikaans',
+        'en'    => 'English'
     ]
 ];
 

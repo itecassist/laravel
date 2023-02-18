@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -15,14 +18,22 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        return view('home');
+        return view('admin.home');
+    }
+
+    public function selectcompany()
+    {
+        $companies = User::with('companies')->find(auth()->id());
+        return view('admin.home', compact('companies'));
+    }
+
+    public function setCompany()
+    {
+        $validate = Validator::make(request()->all(), ['company'=>'required|numeric']);
+        /* Create company Session */
+        session()->put('company', Company::find(request('company'))->toArray());
+        return redirect()->route('dashboard');
     }
 }

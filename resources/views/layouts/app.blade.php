@@ -16,14 +16,12 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
-    
-
-<link rel="stylesheet" href="/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-<link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
+    <link rel="stylesheet" href="/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
     <link rel="stylesheet" href="/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <link rel="stylesheet" href="/css/adminlte.min.css">
-    <link rel="stylesheet" href="/css/custom.css?{{ time() }}">
+    <link rel="stylesheet" href="/css/custom.css?time={{ time() }}">
     @stack('styles')
     @livewireStyles
 </head>
@@ -39,6 +37,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                             class="fas fa-bars"></i></a>
                 </li>
+                <li class="nav-item">{{ session()->get('company')['trading_name'] ?? '' }}</li>
             </ul>
 
             <!-- Right navbar links -->
@@ -153,11 +152,6 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"
                         role="button">
                         <i class="fas fa-th-large"></i>
@@ -194,19 +188,7 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- SidebarSearch Form
-          <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-              <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-sidebar">
-                  <i class="fas fa-search fa-fw"></i>
-                </button>
-              </div>
-            </div>
-          </div>-->
                 @include('layouts.main_menu')
-
             </div>
             <!-- /.sidebar -->
         </aside>

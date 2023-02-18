@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Livewire\UserManagement\Permissions;
+use App\Http\Livewire\UserManagement\Roles;
+use App\Http\Livewire\UserManagement\Users;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +21,18 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::middleware(['web','auth'])->group(function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('admin')->middleware(['auth','web'])->group(function(){
+    Route::get('/home', [\App\Http\Controllers\HomeController::class, 'selectCompany'])->name('home');
+    Route::post('/home', [\App\Http\Controllers\HomeController::class, 'setCompany'])->name('home.select');
+});
+Route::middleware(['web','auth', 'company'])->group(function(){
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
     Route::prefix('user-management')->as('user-management.')->group(function(){
-        Route::get('users', [\App\Http\Controllers\UserManagementController::class, 'users'])->name('users');
-        Route::get('permissions', [\App\Http\Controllers\UserManagementController::class, 'permissions'])->name('permissions');
-        Route::get('roles', [\App\Http\Controllers\UserManagementController::class, 'roles'])->name('roles');
+        Route::get('users', Users::class)->name('users');
+        Route::get('permissions', Permissions::class)->name('permissions');
+        Route::get('roles', Roles::class)->name('roles');
     });
 });
 

@@ -387,7 +387,7 @@
       </li>
       <li class="nav-item {{ request()->is('user-management*') ? 'menu-open':'' }}">
         <a href="#" class="nav-link {{ request()->is('user-management*') ? 'active':'' }}">
-          <i class="nav-icon far fa-plus-square"></i>
+          <i class="nav-icon fa fa-users"></i>
           <p>
             User Management
             <i class="fas fa-angle-left right"></i>

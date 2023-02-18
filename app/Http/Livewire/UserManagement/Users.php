@@ -18,25 +18,17 @@ class Users extends Component
     
     public  $name,
 			$email,
-			$contact_number,
 			$email_verified_at,
 			$password,
-			$job_title,
-			$theme,
 			$is_admin,
-			$avatar,
 			$remember_token;
 
 	protected $rules = [
 		'name'=>'required',
 		'email'=>'required',
-		'contact_number'=>'required',
 		'email_verified_at'=>'required',
 		'password'=>'required',
-		'job_title'=>'required',
-		'theme'=>'required',
 		'is_admin'=>'required',
-		'avatar'=>'required',
 		'remember_token'=>'required',
 	];
 
@@ -69,7 +61,7 @@ class Users extends Component
 		$data = $this->query()
             // ->where('company_id', session()->get('company')['id'])
 			->when($this->searchTerm, function($q){
-				$q->where('first_name', 'like', '%'.$this->searchTerm.'%');
+				$q->where('name', 'like', '%'.$this->searchTerm.'%');
 			})
 			->orderBy($this->sortBy, $this->sortAsc ? 'ASC' : 'DESC')
 			->paginate($this->pageSize);
@@ -83,13 +75,9 @@ class Users extends Component
         $this->recordId = null;
 		$this->name= '';
 		$this->email= '';
-		$this->contact_number= '';
 		$this->email_verified_at= '';
 		$this->password= '';
-		$this->job_title= '';
-		$this->theme= '';
 		$this->is_admin= '';
-		$this->avatar= '';
 		$this->remember_token= '';
         $this->dispatchBrowserEvent('modal', ['modal'=>'modalUsers', 'action'=>'show']);
     }
@@ -100,13 +88,9 @@ class Users extends Component
         $this->recordId = $record->id;
 		$this->name= $record->name;
 		$this->email= $record->email;
-		$this->contact_number= $record->contact_number;
 		$this->email_verified_at= $record->email_verified_at;
 		$this->password= $record->password;
-		$this->job_title= $record->job_title;
-		$this->theme= $record->theme;
 		$this->is_admin= $record->is_admin;
-		$this->avatar= $record->avatar;
 		$this->remember_token= $record->remember_token;
         $this->dispatchBrowserEvent('modal', ['modal'=>'modalUsers', 'action'=>'show']);
     }
@@ -115,7 +99,7 @@ class Users extends Component
     {
         $validated = $this->validate();
 
-        if(!is_null($this->recordID))
+        if(!is_null($this->recordId))
         {
             User::find($this->recordId)->update($validated);  
             $this->dispatchBrowserEvent('alert', ['type'=>'success', 'message'=> __('global.record_updated')]);

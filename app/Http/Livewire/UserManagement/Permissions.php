@@ -55,7 +55,7 @@ class Permissions extends Component
 		$data = $this->query()
             // ->where('company_id', session()->get('company')['id'])
 			->when($this->searchTerm, function($q){
-				$q->where('first_name', 'like', '%'.$this->searchTerm.'%');
+				$q->where('name', 'like', '%'.$this->searchTerm.'%');
 			})
 			->orderBy($this->sortBy, $this->sortAsc ? 'ASC' : 'DESC')
 			->paginate($this->pageSize);
@@ -87,7 +87,7 @@ class Permissions extends Component
     {
         $validated = $this->validate();
 
-        if(!is_null($this->recordID))
+        if(!is_null($this->recordId))
         {
             Permission::find($this->recordId)->update($validated);  
             $this->dispatchBrowserEvent('alert', ['type'=>'success', 'message'=> __('global.record_updated')]);

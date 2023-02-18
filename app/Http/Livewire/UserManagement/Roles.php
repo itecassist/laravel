@@ -51,7 +51,7 @@ class Roles extends Component
 		$data = $this->query()
             // ->where('company_id', session()->get('company')['id'])
 			->when($this->searchTerm, function($q){
-				$q->where('first_name', 'like', '%'.$this->searchTerm.'%');
+				$q->where('name', 'like', '%'.$this->searchTerm.'%');
 			})
 			->orderBy($this->sortBy, $this->sortAsc ? 'ASC' : 'DESC')
 			->paginate($this->pageSize);

@@ -2,6 +2,7 @@
 return [
 	'title'		=> 'Roles',
 	'fields'=>[
-		'name'		=>'Name',
+		'name'		    =>'Name',
+        'permission'    => 'Permission'
 	],
 ];

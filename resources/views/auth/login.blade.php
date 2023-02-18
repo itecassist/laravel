@@ -17,6 +17,11 @@
                     <span class="fas fa-envelope"></span>
                   </div>
                 </div>
+                @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
               </div>
               <div class="input-group mb-3">
                 <input type="password" name="password" class="form-control" placeholder="Password">

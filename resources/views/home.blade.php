@@ -1,3 +1,3 @@
-<x-app-layout>
-    Home
-</x-app-layout>
+<x-guest-layout>
+    ffff
+</x-guest-layout>
