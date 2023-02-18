@@ -15,4 +15,8 @@ class UserManagementController extends Controller
     {
         return view('user-management.permissions');
     }
+    public function roles()
+    {
+        return view('user-management.roles');
+    }
 }

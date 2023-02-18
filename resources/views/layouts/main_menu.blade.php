@@ -401,45 +401,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('user-management.permissions') }}" class="nav-link">
+            <a href="{{ route('user-management.permissions') }}" class="nav-link {{ request()->is('user-management/permissions') ? 'active': '' }}">
               <i class="far fa-circle nav-icon"></i>
               <p>Permissions</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="../examples/language-menu.html" class="nav-link">
+            <a href="{{ route('user-management.roles') }}" class="nav-link {{ request()->is('user-management/roles') ? 'active': '' }}">
               <i class="far fa-circle nav-icon"></i>
-              <p>Language Menu</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="../examples/404.html" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Error 404</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="../examples/500.html" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Error 500</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="../examples/pace.html" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Pace</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="../examples/blank.html" class="nav-link active">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Blank Page</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="../../starter.html" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Starter Page</p>
+              <p>Roles</p>
             </a>
           </li>
         </ul>
