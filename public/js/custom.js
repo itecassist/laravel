@@ -58,8 +58,18 @@ function openNav(val) {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
+$(function(){
+//Initialize Select2 Elements
+$('.select2').select2()
+
+//Initialize Select2 Elements
+$('.select2bs4').select2({
+  theme: 'bootstrap4'
+})
+});
+
 $('.modal').on('shown.bs.modal', function (e) {
-    $(this).find('.select').select2({
+    $(this).find('.select2').select2({
         dropdownParent: $(this).find('.modal-content'),
     });
 })

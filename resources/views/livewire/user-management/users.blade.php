@@ -35,7 +35,6 @@
                                 <th>{{ __('user-management/users.fields.email') }}</th>
                                 <th>{{ __('user-management/users.fields.email_verified_at') }}</th>
                                 <th>{{ __('user-management/users.fields.password') }}</th>
-                                <th>{{ __('user-management/users.fields.is_admin') }}</th>
                                 <th class="w-1"></th>
                             </tr>
                         </thead>
@@ -46,15 +45,14 @@
                                     <td>{{ $rec->email }}</td>
                                     <td>{{ $rec->email_verified_at }}</td>
                                     <td>{{ $rec->password }}</td>
-                                    <td>{{ $rec->is_admin }}</td>
                                     <td>
-                                        @canany(['users_edit', 'users_delete', 'sa'])
+                                        @canany(['users_update', 'users_delete', 'sa'])
                                             <div class="dropleft"><a class="dropdown-toggle" type="button"
                                                     data-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa fa-cog"></i>
                                                 </a>
                                                 <div class="dropdown-menu">
-                                                    @canany(['users_edit', 'sa'])
+                                                    @canany(['users_update', 'sa'])
                                                         <a class="dropdown-item" href="#"
                                                             wire:click="editUsers({{ $rec->id }})"> {{ __('global.edit') }}
                                                         </a>

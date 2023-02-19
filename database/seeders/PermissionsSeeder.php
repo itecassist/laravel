@@ -16,7 +16,7 @@ class PermissionsSeeder extends Seeder
         $permissions = [
             [
                 'id'    => '1',
-                'access' => 'users_management',
+                'access' => 'user_management',
                 'name' => 'User Management',
                 'group_id' => 0
             ],
@@ -28,8 +28,8 @@ class PermissionsSeeder extends Seeder
             ],
             [
                 'id'    => '3',
-                'access' => 'permissions_edit',
-                'name'  => 'Permissions Edit',
+                'access' => 'permissions_update',
+                'name'  => 'Permissions Update',
                 'group_id' => 1
             ],
             [
@@ -52,8 +52,8 @@ class PermissionsSeeder extends Seeder
             ],
             [
                 'id'    => '7',
-                'access' => 'roles_edit',
-                'name'  => 'Roles Edit',
+                'access' => 'roles_update',
+                'name'  => 'Roles Update',
                 'group_id' => 1
             ],
             [
@@ -76,8 +76,8 @@ class PermissionsSeeder extends Seeder
             ],
             [
                 'id'    => '11',
-                'access' => 'users_edit',
-                'name'  => 'Users Edit',
+                'access' => 'users_update',
+                'name'  => 'Users Update',
                 'group_id' => 1
             ],
             [

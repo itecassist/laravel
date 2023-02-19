@@ -18,12 +18,12 @@ class Roles extends Component
     public $recordId=null;
     
     public $permission_list;
-    public $name, $permission =[];
+    public $name, $permissions =[];
 
 	protected $rules = [
 		'name'=>'required',
-        'permission' => 'array',
-        'permission.*' => 'required|integer',
+        'permissions' => 'array',
+        'permissions.*' => 'required|integer',
 	];
 
     public function mount()
@@ -71,19 +71,20 @@ class Roles extends Component
         //$this->reset();
         $this->recordId = null;
 		$this->name= '';
-        $this->permission = [];
+        $this->permissions = [];
         $this->dispatchBrowserEvent('modal', ['modal'=>'modalRoles', 'action'=>'show']);
     }
 
     public function editRoles(Role $record)
     {
         $this->resetErrorBag();
+        $this->permissions = [];
         $this->recordId = $record->id;
 		$this->name= $record->name;
         
         foreach($record->permissions as $perm)
         {
-            $this->permission[]= $perm->id;
+            $this->permissions[]= $perm->id;
         }
         $this->dispatchBrowserEvent('modal', ['modal'=>'modalRoles', 'action'=>'show']);
     }
@@ -95,15 +96,15 @@ class Roles extends Component
         if(!is_null($this->recordId))
         {
             Role::find($this->recordId)->update($validated); 
-            Role::find($this->recordId)->permissions()->sync($this->permission); 
+            Role::find($this->recordId)->permissions()->sync($this->permissions); 
             $this->recordId = null;
             $this->dispatchBrowserEvent('alert', ['type'=>'success', 'message'=> __('global.record_updated')]);
         }else{
             $role = Role::create($validated);
-            $role->permissions()->sync($this->permission);
+            $role->permissions()->sync($this->permissions);
             $this->dispatchBrowserEvent('alert', ['type'=>'success', 'message'=> __('global.record_created')]);
         }
-        $this->permission=[];
+        $this->permissions=[];
         $this->dispatchBrowserEvent('modal', ['modal'=>'modalRoles', 'action'=>'hide']);
     }
 

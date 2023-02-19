@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
     <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
     <link rel="stylesheet" href="/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
@@ -223,10 +225,11 @@
     <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
     <script src="/plugins/toastr/toastr.min.js"></script>
     <script src="/plugins/select2/js/select2.full.min.js"></script>
     <script src="/js/adminlte.min.js"></script>
-    <script src="/js/demo.js"></script>
+    <script src="/js/demo.js?time{{ time() }}"></script>
     @livewireScripts
     <script src="{{ asset('js/custom.js') }}?{{ time() }}"></script>
     @stack('scripts')

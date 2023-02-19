@@ -122,7 +122,6 @@
 
         function initSelect () {
           el.select2({
-            placeholder: '{{__('Select your option')}}',
             allowClear: !el.attr('required'),
           })
         }
