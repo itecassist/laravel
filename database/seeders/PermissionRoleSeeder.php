@@ -18,7 +18,7 @@ class PermissionRoleSeeder extends Seeder
         $admin_permissions = $all_permissions->filter(function ($permission) {
             return $permission->title != 'loan_application_create';
         });
-        Role::findOrFail(1)->permissions()->sync($admin_permissions);
+        Role::findOrFail(1)->permissions()->sync([14]);
         $user_permissions = $all_permissions->filter(function ($permission) {
             return in_array($permission->title, [
                 'profile_password_edit',
@@ -27,11 +27,10 @@ class PermissionRoleSeeder extends Seeder
                 'loan_application_show',
             ]);
         });
-        Role::findOrFail(2)->permissions()->sync($user_permissions);
+        Role::findOrFail(2)->permissions()->sync($admin_permissions);
         $analyst_cfo_permissions = $user_permissions->filter(function ($permission) {
             return $permission->title != 'loan_application_create';
         });
         Role::findOrFail(3)->permissions()->sync($analyst_cfo_permissions);
-        Role::findOrFail(4)->permissions()->sync($analyst_cfo_permissions);
     }
 }

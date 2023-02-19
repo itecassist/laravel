@@ -18,7 +18,7 @@ class Permissions extends Component
     
     public  $access,
 			$name,
-			$group_id;
+			$group_id, $crud;
 
 	protected $rules = [
 		'access'=>'required',
@@ -92,7 +92,22 @@ class Permissions extends Component
             Permission::find($this->recordId)->update($validated);  
             $this->dispatchBrowserEvent('alert', ['type'=>'success', 'message'=> __('global.record_updated')]);
         }else{
-           Permission::create($validated);
+            if($this->crud)
+            {
+                $access = ['access', 'create', 'delete', 'update'];
+                $name = ['Access', 'Create', 'Delete', 'Update'];
+                for($i=0; $i<count($access); $i++)
+                {
+                    $data = [
+                        'access' => $validated['access'].'_'.$access[$i],
+                        'name'  => $validated['name'].' '.$name[$i],
+                        'group_id'  => $validated['group_id']
+                    ];
+                    Permission::create($data);
+                }
+            }else{
+                Permission::create($validated);
+            }
             $this->dispatchBrowserEvent('alert', ['type'=>'success', 'message'=> __('global.record_created')]);
         }
         $this->dispatchBrowserEvent('modal', ['modal'=>'modalPermissions', 'action'=>'hide']);

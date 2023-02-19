@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire\UserManagement;
 
-use Livewire\Component;
 use App\Models\Role;
+use Livewire\Component;
+use App\Models\Permission;
 use Livewire\WithPagination;
 
 class Roles extends Component
@@ -16,13 +17,19 @@ class Roles extends Component
 	public $pageSize = 15;
     public $recordId=null;
     
-    public  $name;
+    public $permission_list;
+    public $name, $permission =[];
 
 	protected $rules = [
 		'name'=>'required',
+        'permission' => 'array',
+        'permission.*' => 'required|integer',
 	];
 
-    
+    public function mount()
+    {
+        $this->permission_list = Permission::orderBy('group_id')->orderBy('name')->get();
+    }
     public function updatedSearchTerm()
 	{
 		$this->resetPage();
@@ -64,6 +71,7 @@ class Roles extends Component
         //$this->reset();
         $this->recordId = null;
 		$this->name= '';
+        $this->permission = [];
         $this->dispatchBrowserEvent('modal', ['modal'=>'modalRoles', 'action'=>'show']);
     }
 
@@ -72,6 +80,11 @@ class Roles extends Component
         $this->resetErrorBag();
         $this->recordId = $record->id;
 		$this->name= $record->name;
+        
+        foreach($record->permissions as $perm)
+        {
+            $this->permission[]= $perm->id;
+        }
         $this->dispatchBrowserEvent('modal', ['modal'=>'modalRoles', 'action'=>'show']);
     }
 
@@ -81,12 +94,16 @@ class Roles extends Component
 
         if(!is_null($this->recordId))
         {
-            Role::find($this->recordId)->update($validated);  
+            Role::find($this->recordId)->update($validated); 
+            Role::find($this->recordId)->permissions()->sync($this->permission); 
+            $this->recordId = null;
             $this->dispatchBrowserEvent('alert', ['type'=>'success', 'message'=> __('global.record_updated')]);
         }else{
-           Role::create($validated);
+            $role = Role::create($validated);
+            $role->permissions()->sync($this->permission);
             $this->dispatchBrowserEvent('alert', ['type'=>'success', 'message'=> __('global.record_created')]);
         }
+        $this->permission=[];
         $this->dispatchBrowserEvent('modal', ['modal'=>'modalRoles', 'action'=>'hide']);
     }
 

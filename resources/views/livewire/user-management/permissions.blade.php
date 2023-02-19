@@ -106,3 +106,26 @@
     </form>
     <x-modal-delete id="deletePermissions" />
 </div>
+@push('scripts')
+    <script>
+      document.addEventListener("livewire:load", () => {
+        let el = $('#group_id')
+        initSelect()
+
+        Livewire.hook('message.processed', (message, component) => {
+          initSelect()
+        })
+
+        el.on('change', function (e) {
+            @this.set('group_id', el.select2("val"))
+        })
+
+        function initSelect () {
+          el.select2({
+            placeholder: '{{__('Select your option')}}',
+            allowClear: !el.attr('required'),
+          })
+        }
+      })
+    </script>
+@endpush

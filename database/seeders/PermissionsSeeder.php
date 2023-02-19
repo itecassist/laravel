@@ -23,93 +23,81 @@ class PermissionsSeeder extends Seeder
             [
                 'id'    => '2',
                 'access' => 'permissions_create',
-                'name'  => 'Permissions',
+                'name'  => 'Permissions Create',
                 'group_id' => 1
             ],
             [
                 'id'    => '3',
                 'access' => 'permissions_edit',
-                'name'  => 'Permissions',
+                'name'  => 'Permissions Edit',
                 'group_id' => 1
             ],
             [
                 'id'    => '4',
                 'access' => 'permissions_access',
-                'name'  => 'Permissions',
+                'name'  => 'Permissions Access',
                 'group_id' => 1
             ],
             [
                 'id'    => '5',
                 'access' => 'permissions_delete',
-                'name'  => 'Permissions',
+                'name'  => 'Permissions Delete',
                 'group_id' => 1
             ],
             [
                 'id'    => '6',
-                'access' => 'permissions_access',
-                'name'  => 'Permissions',
+                'access' => 'roles_create',
+                'name'  => 'Roles Create',
                 'group_id' => 1
             ],
             [
                 'id'    => '7',
-                'access' => 'roles_create',
-                'name'  => 'Roles',
+                'access' => 'roles_edit',
+                'name'  => 'Roles Edit',
                 'group_id' => 1
             ],
             [
                 'id'    => '8',
-                'access' => 'roles_edit',
-                'name'  => 'Roles',
+                'access' => 'roles_access',
+                'name'  => 'Roles Access',
                 'group_id' => 1
             ],
             [
                 'id'    => '9',
-                'access' => 'roles_access',
-                'name'  => 'Roles',
+                'access' => 'roles_delete',
+                'name'  => 'Roles Delete',
                 'group_id' => 1
             ],
             [
                 'id'    => '10',
-                'access' => 'roles_delete',
-                'name'  => 'Roles',
+                'access' => 'users_create',
+                'name'  => 'Users Create',
                 'group_id' => 1
             ],
             [
                 'id'    => '11',
-                'access' => 'roles_access',
-                'name'  => 'Roles',
+                'access' => 'users_edit',
+                'name'  => 'Users Edit',
                 'group_id' => 1
             ],
             [
                 'id'    => '12',
-                'access' => 'users_create',
-                'name'  => 'Users',
+                'access' => 'users_access',
+                'name'  => 'Users Access',
                 'group_id' => 1
             ],
             [
                 'id'    => '13',
-                'access' => 'users_edit',
-                'name'  => 'Users',
-                'group_id' => 1
-            ],
-            [
-                'id'    => '14',
-                'access' => 'users_access',
-                'name'  => 'Users',
-                'group_id' => 1
-            ],
-            [
-                'id'    => '15',
                 'access' => 'users_delete',
-                'name'  => 'Users',
+                'name'  => 'Users Delete',
                 'group_id' => 1
             ],
             [
-                'id'    => '16',
-                'access' => 'users_access',
-                'name'  => 'Users',
-                'group_id' => 1
-            ],
+                'id' => 14,
+                'access' => 'sa',
+                'name'  => 'Super Admin',
+                'group_id' =>0
+            ]
            
         ];
 

@@ -8,9 +8,8 @@ return [
 		'email_verified_at'		=>'Email Verified At',
 		'password'		=>'Password',
 		'job_title'		=>'Job Title',
-		'theme'		=>'Theme',
-		'is_admin'		=>'Is Admin',
 		'avatar'		=>'Avatar',
 		'remember_token'		=>'Remember Token',
+        'roles'         => 'Roles'
 	],
 ];
