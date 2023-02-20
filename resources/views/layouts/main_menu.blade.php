@@ -386,47 +386,7 @@
                 </li>
             </ul>
         </li>
-        @canany(['user_management', 'sa'])
-            <li class="nav-item {{ request()->is('user-management*') ? 'menu-open' : '' }}">
-                <a href="#" class="nav-link {{ request()->is('user-management*') ? 'active' : '' }}">
-                    <i class="nav-icon fa fa-users"></i>
-                    <p>
-                        User Management
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    @canany(['users_access', 'sa'])
-                    <li class="nav-item">
-                        <a href="{{ route('user-management.users') }}"
-                            class="nav-link {{ request()->is('user-management/users') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Users</p>
-                        </a>
-                    </li>
-                    @endcanany
-                    @canany(['permissions_access', 'sa'])
-                    <li class="nav-item">
-                        <a href="{{ route('user-management.permissions') }}"
-                            class="nav-link {{ request()->is('user-management/permissions') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Permissions</p>
-                        </a>
-                    </li>
-                    @endcanany
-                    @canany(['roles_access', 'sa'])
-                    <li class="nav-item">
-                        <a href="{{ route('user-management.roles') }}"
-                            class="nav-link {{ request()->is('user-management/roles') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Roles</p>
-                        </a>
-                    </li>
-                    @endcanany
-                </ul>
-            </li>
-        @endcanany
-
+       
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-search"></i>
@@ -528,25 +488,47 @@
                 <p>Level 1</p>
             </a>
         </li>
-        <li class="nav-header">LABELS</li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon far fa-circle text-danger"></i>
-                <p class="text">Important</p>
+        @canany(['user_management', 'sa'])
+        <li class="nav-item {{ request()->is('user-management*') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ request()->is('user-management*') ? 'active' : '' }}">
+                <i class="nav-icon fa fa-users"></i>
+                <p>
+                    User Management
+                    <i class="fas fa-angle-left right"></i>
+                </p>
             </a>
+            <ul class="nav nav-treeview">
+                @canany(['users_access', 'sa'])
+                <li class="nav-item">
+                    <a href="{{ route('user-management.users') }}"
+                        class="nav-link {{ request()->is('user-management/users') ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Users</p>
+                    </a>
+                </li>
+                @endcanany
+                @canany(['permissions_access', 'sa'])
+                <li class="nav-item">
+                    <a href="{{ route('user-management.permissions') }}"
+                        class="nav-link {{ request()->is('user-management/permissions') ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Permissions</p>
+                    </a>
+                </li>
+                @endcanany
+                @canany(['roles_access', 'sa'])
+                <li class="nav-item">
+                    <a href="{{ route('user-management.roles') }}"
+                        class="nav-link {{ request()->is('user-management/roles') ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Roles</p>
+                    </a>
+                </li>
+                @endcanany
+            </ul>
         </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon far fa-circle text-warning"></i>
-                <p>Warning</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon far fa-circle text-info"></i>
-                <p>Informational</p>
-            </a>
-        </li>
+    @endcanany
+
     </ul>
 </nav>
 <!-- /.sidebar-menu -->

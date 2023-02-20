@@ -40,7 +40,7 @@
                                 <td>{{ $rec->access }}</td>
                                 <td>{{ $rec->name }}</td>
                                 <td>{{ $rec->group_id > 0 ? $rec->group->name : 'Main' }}</td>
-                                <td>
+                                <td class="text-right">
                                     <div class="dropleft">
                                         <a class="dropdown-toggle" type="button" data-toggle="dropdown"
                                             aria-expanded="false">

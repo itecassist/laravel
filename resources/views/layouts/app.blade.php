@@ -28,7 +28,7 @@
     @livewireStyles
 </head>
 
-<body class="hold-transition sidebar-mini text-sm">
+<body class="hold-transition sidebar-mini text-sm ">
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
@@ -39,7 +39,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                             class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item">{{ session()->get('company')['trading_name'] ?? '' }}</li>
+                <li class="nav-item"><h5>{{ session()->get('company')['trading_name'] ?? '' }}</h5></li>
             </ul>
 
             <!-- Right navbar links -->
@@ -166,11 +166,11 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">{{ __('global.profile') }}</a>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">Logout</a>
+                document.getElementById('logout-form').submit();">{{ __('global.log_out') }}</a>
                     </div>
                 </li>
 
@@ -199,6 +199,7 @@
         <div class="content-wrapper">
             {{ $slot }}
         </div>
+        
         <!-- /.content-wrapper -->
 
         <footer class="main-footer">

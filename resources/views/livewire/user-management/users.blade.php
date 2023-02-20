@@ -45,7 +45,7 @@
                                     <td>{{ $rec->email }}</td>
                                     <td>{{ $rec->email_verified_at }}</td>
                                     <td>{{ $rec->password }}</td>
-                                    <td>
+                                    <td class="text-right">
                                         @canany(['users_update', 'users_delete', 'sa'])
                                             <div class="dropleft"><a class="dropdown-toggle" type="button"
                                                     data-toggle="dropdown" aria-expanded="false">

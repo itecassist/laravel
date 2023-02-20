@@ -45,7 +45,7 @@
                                             <span class="badge bg-info">{{ $permission->access }}</span>
                                         @endforeach
                                     </td>
-                                    <td>
+                                    <td class="text-right">
                                         <div class="dropleft float-right">
                                             <a class="dropdown-toggle" type="button" data-toggle="dropdown"
                                                 aria-expanded="false">
@@ -102,7 +102,7 @@
             </div>
         </x-modal>
     </form>
-    <x-modal-delete id="deleteRoles" />
+    <x-modal-delete id="Roles" />
 </div>
 @push('scripts')
     <script>

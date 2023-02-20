@@ -114,7 +114,7 @@ class Roles extends Component
         $this->dispatchBrowserEvent('modal', ['modal'=>'deleteRoles', 'action'=>'show']);
     }
 
-    public function destroy()
+    public function destroyRoles()
 	{
 		Role::where('id', $this->recordId)->delete();
 		$this->dispatchBrowserEvent('alert', ['type'=>'success', 'message'=> __('global.record_deleted')]);

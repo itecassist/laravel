@@ -119,7 +119,7 @@ class Permissions extends Component
         $this->dispatchBrowserEvent('modal', ['modal'=>'deletePermissions', 'action'=>'show']);
     }
 
-    public function destroy()
+    public function destroyPermissions()
 	{
 		Permission::where('id', $this->recordId)->delete();
 		$this->dispatchBrowserEvent('alert', ['type'=>'success', 'message'=> __('global.record_deleted')]);

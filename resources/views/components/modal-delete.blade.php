@@ -1,6 +1,6 @@
 @props(['id'])
-<form wire:submit.prevent="{{ $id }}">
-    <div class="modal fade" id="{{ $id }}" wire:ignore.self>
+<form wire:submit.prevent="destroy{{ $id }}">
+    <div class="modal fade" id="delete{{ $id }}" wire:ignore.self>
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">{{ __('global.close') }}</button>
-                    <button type="button" class="btn btn-danger btn-sm">{{ __('global.delete') }}</button>
+                    <button type="dubmit" class="btn btn-danger btn-sm">{{ __('global.delete') }}</button>
                 </div>
             </div>
 

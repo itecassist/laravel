@@ -143,7 +143,7 @@ class Users extends Component
         $this->dispatchBrowserEvent('modal', ['modal'=>'deleteUsers', 'action'=>'show']);
     }
 
-    public function destroy()
+    public function destroyPermissions()
 	{
 		User::where('id', $this->recordId)->delete();
 		$this->dispatchBrowserEvent('alert', ['type'=>'success', 'message'=> __('global.record_deleted')]);
