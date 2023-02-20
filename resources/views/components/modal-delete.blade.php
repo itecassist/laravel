@@ -17,8 +17,6 @@
                     <button type="dubmit" class="btn btn-danger btn-sm">{{ __('global.delete') }}</button>
                 </div>
             </div>
-
         </div>
-
     </div>
 </form>

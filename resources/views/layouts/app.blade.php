@@ -28,7 +28,10 @@
     @livewireStyles
 </head>
 
-<body class="hold-transition sidebar-mini text-sm ">
+<body class="hold-transition sidebar-mini 
+{{ session()->get('user_settings')['small_text_body'] ? 'text-sm':'' }}
+{{ session()->get('user_settings')['dark_mode'] ? 'dark_mode':'' }}
+">
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
@@ -166,7 +169,7 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">{{ __('global.profile') }}</a>
+                        <a class="dropdown-item" href="{{ route('user-settings') }}">{{ __('global.profile') }}</a>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
@@ -182,7 +185,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="../../index3.html" class="brand-link">
+            <a href="{{ route('home') }}" class="brand-link">
                 <img src="/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
                 <span class="brand-text font-weight-light">iTec Assist</span>

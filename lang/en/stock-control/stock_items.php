@@ -1,0 +1,28 @@
+<?php
+return [
+	'title'		=> 'StockItems',
+	'fields'=>[
+		'company_id'		=>'Company Id',
+		'stock_category_id'		=>'Stock Category Id',
+		'name'		=>'Name',
+		'slug'		=>'Slug',
+		'item_code'		=>'Item Code',
+		'stock_unit_id'		=>'Stock Unit Id',
+		'expire_date'		=>'Expire Date',
+		'on_hand'		=>'On Hand',
+		'min_order_quantity'		=>'Min Order Quantity',
+		'tags'		=>'Tags',
+		'short_description'		=>'Short Description',
+		'description'		=>'Description',
+		'weight_gram'		=>'Weight Gram',
+		'length_cm'		=>'Length Cm',
+		'height_cm'		=>'Height Cm',
+		'width_cm'		=>'Width Cm',
+		'unit_price'		=>'Unit Price',
+		'unit_price_for'		=>'Unit Price For',
+		'markup_percentage'		=>'Markup Percentage',
+		'main_image'		=>'Main Image',
+		'is_active'		=>'Is Active',
+		'is_feature'		=>'Is Feature',
+	],
+];

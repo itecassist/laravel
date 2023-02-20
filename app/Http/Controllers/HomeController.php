@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Company;
+use App\Models\UserSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,6 +26,7 @@ class HomeController extends Controller
 
     public function selectcompany()
     {
+        session()->put('user_settings', UserSetting::where('user_id', auth()->id())->first()->toArray());
         $companies = User::with('companies')->find(auth()->id());
         return view('admin.home', compact('companies'));
     }

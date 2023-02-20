@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Livewire\StockControl\StockCategories;
+use App\Http\Livewire\StockControl\StockItems;
+use App\Http\Livewire\StockControl\StockUnits;
 use App\Http\Livewire\UserManagement\Permissions;
 use App\Http\Livewire\UserManagement\Roles;
 use App\Http\Livewire\UserManagement\Users;
+use App\Http\Livewire\UserSettings;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,10 +33,16 @@ Route::middleware(['web','auth', 'company'])->group(function(){
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
+    Route::get('user-settings', UserSettings::class)->name('user-settings');
     Route::prefix('user-management')->as('user-management.')->group(function(){
         Route::get('users', Users::class)->name('users');
         Route::get('permissions', Permissions::class)->name('permissions');
         Route::get('roles', Roles::class)->name('roles');
+    });
+    Route::prefix('stock-control')->as('stock-control.')->group(function(){
+        Route::get('categories', StockCategories::class)->name('categories');
+        Route::get('units', StockUnits::class)->name('units');
+        Route::get('items', StockItems::class)->name('items');
     });
 });
 
