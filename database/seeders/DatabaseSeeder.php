@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             StockUnitSeeder::class,
             StockItemSeeder::class,
             StockOptionSeeder::class,
+            CounterSeeder::class,
         ]);
     }
 }

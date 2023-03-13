@@ -30,6 +30,7 @@ Route::prefix('admin')->middleware(['auth','web'])->group(function(){
     Route::post('/home', [\App\Http\Controllers\HomeController::class, 'setCompany'])->name('home.select');
 });
 Route::middleware(['web','auth', 'company'])->group(function(){
+    Route::view('home', 'home');
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
@@ -39,10 +40,16 @@ Route::middleware(['web','auth', 'company'])->group(function(){
         Route::get('permissions', Permissions::class)->name('permissions');
         Route::get('roles', Roles::class)->name('roles');
     });
+    Route::prefix('settings')->as('settings.')->group(function (){
+        Route::get('counters', \App\Http\Livewire\Settings\Counters::class)->name('counters');
+        Route::get('lookups', \App\Http\Livewire\Settings\Enums::class)->name('enums');
+    });
     Route::prefix('stock-control')->as('stock-control.')->group(function(){
         Route::get('categories', StockCategories::class)->name('categories');
         Route::get('units', StockUnits::class)->name('units');
         Route::get('items', StockItems::class)->name('items');
+        Route::get('items/form/{id?}', \App\Http\Livewire\StockControl\StockItemForm::class)->name('items.form');
     });
+    Route::get('crud', [\App\Http\Controllers\CrudController::class, 'index'])->name('crud.index');
 });
 

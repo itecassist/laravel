@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class StockItem extends Model
 {
     use HasFactory;
     protected $fillable = [
         'id',
+        'company_id',
         'stock_category_id',
         'name',
         'item_code',
@@ -53,5 +55,10 @@ class StockItem extends Model
     public function options()
     {
        return $this->hasMany(StockOption::class, 'stock_item_id', 'id');
+    }
+
+    public function company() : BelongsTo
+    {
+        return $this->belongsTo(Company::class);
     }
 }

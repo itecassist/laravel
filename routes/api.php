@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('table-fields/{tbl}', [\App\Http\Controllers\CrudController::class, 'tableFields']);
+Route::post( 'save-table', [\App\Http\Controllers\CrudController::class, 'saveTable']);

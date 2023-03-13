@@ -5,7 +5,7 @@
         <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
         <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{ route('dashboard') }}" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                     Dashboard
@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('stock-control.items') }}" class="nav-link {{ request()->is('stock-control/items') ? 'active' : '' }}">
+                    <a href="{{ route('stock-control.items') }}" class="nav-link {{ request()->is('stock-control/items*') ? 'active' : '' }}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Items</p>
                     </a>
@@ -82,6 +82,34 @@
         </li>
     @endcanany
 
+        <li class="nav-item {{ request()->is('settings*') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ request()->is('settings*') ? 'active' : '' }}">
+                <i class="nav-icon fa fa-users"></i>
+                <p>
+                    Settings
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('settings.counters') }}"
+                       class="nav-link {{ request()->is('settings/counters') ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Counters</p>
+                    </a>
+                </li>
+                @can('sa')
+                <li class="nav-item">
+                    <a href="{{ route('settings.enums') }}"
+                       class="nav-link {{ request()->is('settings/enums') ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lookups</p>
+                    </a>
+                </li>
+                @endcan
+            </ul>
+
+        </li>
     </ul>
 </nav>
 <!-- /.sidebar-menu -->

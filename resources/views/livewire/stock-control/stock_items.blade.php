@@ -1,5 +1,5 @@
 <div class="mt-3 content">
-	
+
     <!-- Default box -->
       <div class="card">
         <div class="card-header">
@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-md-4">
 				@canany(['stock_items_create', 'sa'])
-					<button class="btn btn-primary btn-sm" wire:click="createStockItems"><i class="fa fa-plus"></i> {{ __('global.create_new') }}</button>
+					<a class="btn btn-primary btn-sm" href="{{ route('stock-control.items.form') }}"><i class="fa fa-plus"></i> {{ __('global.create_new') }}</a>
 				@endcanany
 				</div>
                 <div class="col-md-3">
@@ -39,7 +39,7 @@
                         @foreach ($data as $rec)
                         <tr>
 							<td>{{ $rec->company_id }}</td>
-							<td>{{ $rec->stock_category_id }}</td>
+							<td>{{ $rec->category->name }}</td>
 							<td>{{ $rec->name }}</td>
 							<td>{{ $rec->slug }}</td>
 							<td>{{ $rec->item_code }}</td>
@@ -49,7 +49,7 @@
                                         <i class="fa fa-cog"></i>
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#" wire:click="editStockItems({{ $rec->id }})"> {{ __('global.edit') }} </a>
+                                        <a class="dropdown-item" href="{{route('stock-control.items.form', $rec->id)}}" > {{ __('global.edit') }} </a>
                                         <a class="dropdown-item" href="#" wire:click="deleteStockItems({{ $rec->id }})"> {{ __('global.delete') }} </a>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
 @endcan--}}
     <form wire:submit.prevent="submitStockItems">
         <x-modal id="modalStockItems" :title="__('stock-control/stock_items.title')">
-            
+
 	<div class="form-group">
                 <x-label for="company_id">{{ __('stock-control/stock_items.fields.company_id') }}</x-label><x-select id="company_id" wire:model.defer="company_id" class="{{ $errors->has('company_id') ? 'is-invalid' : '' }}">
                 <option value="">{{ __('global.pleaseSelect') }}</option>
