@@ -12,6 +12,35 @@
                 </p>
             </a>
         </li>
+        <li class="nav-item {{ request()->is('documents*') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ request()->is('documents*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                    Documents
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('documents.all') }}" class="nav-link {{ request()->is('documents.all') ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>All</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('stock-control.units') }}" class="nav-link {{ request()->is('stock-control/units') ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Units</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('stock-control.items') }}" class="nav-link {{ request()->is('stock-control/items*') ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Items</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li class="nav-item {{ request()->is('stock-control*') ? 'menu-open' : '' }}">
             <a href="#" class="nav-link {{ request()->is('stock-control*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-copy"></i>

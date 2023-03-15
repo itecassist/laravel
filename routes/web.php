@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::prefix('mail-test')->group(function (){
+    Route::get('/', [\App\Http\Controllers\MailTestController::class, 'getFolders']);
+});
 
 Auth::routes();
 Route::prefix('admin')->middleware(['auth','web'])->group(function(){
@@ -31,9 +34,16 @@ Route::prefix('admin')->middleware(['auth','web'])->group(function(){
 });
 Route::middleware(['web','auth', 'company'])->group(function(){
     Route::view('home', 'home');
+    Route::prefix('configs')->group(function (){
+        Route::get('mail',\App\Http\Livewire\MailConfigs::class)->name('mail-configs');
+        Route::get('document', \App\Http\Livewire\DocumentConfigs::class)->name('document-configs');
+    });
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
+    Route::prefix('documents')->as('documents.')->group(function (){
+        Route::get("documents", \App\Http\Livewire\Documents::class)->name('all');
+    });
     Route::get('user-settings', UserSettings::class)->name('user-settings');
     Route::prefix('user-management')->as('user-management.')->group(function(){
         Route::get('users', Users::class)->name('users');

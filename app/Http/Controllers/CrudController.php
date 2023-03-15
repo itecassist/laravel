@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Crud\LanguageClass;
-use App\Http\Controllers\Crud\LivewireClass;
+use App\Http\Controllers\Crud\LivewireController;
+use App\Http\Controllers\Crud\LivewireView;
 use App\Models\Crud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -52,7 +53,8 @@ class CrudController extends Controller
         }
         // Crud
         new LanguageClass($name, $description, $table);
-        new LivewireClass($name, $null, $sel, $table);
+        new LivewireView($name, $null, $sel, $table);
+        new LivewireController($table, $name);
         return response($data);
     }
 }

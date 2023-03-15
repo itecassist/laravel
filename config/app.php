@@ -185,7 +185,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Webklex\IMAP\Providers\LaravelServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -211,6 +211,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
+        'Client' => Webklex\IMAP\Facades\Client::class,
     ])->toArray(),
 
 ];
